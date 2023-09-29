@@ -1,0 +1,115 @@
+<!--
+How to fetch data from localserver database and display on HTML table using PHP ?
+Source: https://www.geeksforgeeks.org/how-to-fetch-data-from-localserver-database-and-display-on-html-table-using-php/
+
+
+
+
+-->
+
+<!-- PHP code to establish connection with the localserver -->
+
+<!--
+<?php
+
+// Username is root
+$user = 'root';
+$password = '';
+
+// Database name is geeksforgeeks
+$database = 'geeksforgeeks';
+
+// Server is localhost with
+// port number 3306
+$servername='localhost:3306';
+$mysqli = new mysqli($servername, $user,
+				$password, $database);
+
+// Checking for connections
+if ($mysqli->connect_error) { die('Connect Error (' . $mysqli->connect_errno .
+') '. $mysqli->connect_error); } // SQL query to select data from database $sql
+= " SELECT * FROM userdata ORDER BY score DESC "; $result =
+$mysqli->query($sql); $mysqli->close(); ?>
+
+-->
+
+<!-- HTML code to display data in tabular format -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="styles/admin.css" rel="stylesheet" />
+    <title>View User</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="site-identity">
+        <h1>View User</h1>
+      </div>
+
+      <nav class="site-navigation">
+        <ul class="nav">
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="viewUser.html">View user</a></li>
+          <li><a href="uploadTimetable.html">Upload Timetable</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="statistics-table">
+      <h1>Student</h1>
+      <!-- TABLE CONSTRUCTION -->
+      <table>
+        <tr>
+          <th>Student ID</th>
+          <th>Student Name</th>
+          <th>Student Email</th>
+        </tr>
+        <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+        <!--
+            <?php
+				// LOOP TILL END OF DATA
+				while($rows=$result->fetch_assoc()) { ?>
+                     -->
+        <tr>
+          <!-- FETCHING DATA FROM EACH
+					ROW OF EVERY COLUMN -->
+          <td><?php echo $rows['studentId'];?></td>
+          <td><?php echo $rows['studentName'];?></td>
+          <td><?php echo $rows['studentEmail'];?></td>
+        </tr>
+        <?php
+				}
+			?>
+      </table>
+      <h1>Tutor</h1>
+      <!-- TABLE CONSTRUCTION -->
+      <table>
+        <tr>
+          <th>Tutor ID</th>
+          <th>Tutor Name</th>
+          <th>Subject</th>
+          <th>Tutor Email</th>
+        </tr>
+        <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+        <!--
+        <?php
+				// LOOP TILL END OF DATA
+				while($rows=$result->fetch_assoc()) { ?>
+         -->
+        <tr>
+          <!-- FETCHING DATA FROM EACH
+					ROW OF EVERY COLUMN -->
+          <td><?php echo $rows['tutorId'];?></td>
+          <td><?php echo $rows['tutorName'];?></td>
+          <td><?php echo $rows['subject'];?></td>
+          <td><?php echo $rows['tutorEmail'];?></td>
+        </tr>
+        <?php
+				}
+			?>
+      </table>
+    </section>
+  </body>
+</html>

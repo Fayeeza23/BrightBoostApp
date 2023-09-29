@@ -1,0 +1,81 @@
+/*-----header------*/
+
+body {
+  font-family: Helvetica;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f6f6f6;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: #e5dc8d;
+}
+
+a:hover {
+  color: rgb(225, 237, 249);
+}
+
+.site-header {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: space-between;
+  background-color: #3d1959;
+  color: #e5dc8d;
+}
+
+.site-identity h1 {
+  font-size: 1.5em;
+  margin: 0.6em 0;
+  display: inline-block;
+}
+
+.site-navigation ul,
+.site-navigation li {
+  margin: 0;
+  padding: 0;
+}
+
+.site-navigation li {
+  display: inline-block;
+  margin: 1.4em 1em 1em 1em;
+}
+
+/*-----Statstics page ------*/
+
+table {
+  margin: 0 auto;
+  font-size: large;
+  border: 1px solid black;
+}
+
+.statistics-table h1 {
+  text-align: center;
+  color: #3d1959;
+  font-size: xx-large;
+}
+
+td {
+  background-color: #e5dc8d;
+  border: 1px solid black;
+}
+
+th,
+td {
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  font-weight: lighter;
+}
+
+/*-----Statstics page ------*/
+#uploadForm {
+  padding: 0.5em 1em;
+}

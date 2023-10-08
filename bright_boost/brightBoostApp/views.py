@@ -48,10 +48,14 @@ def registerView(request):
 
     return render(request, 'registration.html', {'form': form})
 
-@login_required
+
 def display_timetable(request):
     tutor_schedules = TutorSchedule.objects.all()
     return render(request, 'display_timetable.html', {'tutor_schedules': tutor_schedules})
+
+def homepage(request):
+    tutor_schedules = TutorSchedule.objects.all()
+    return render(request, 'home.html', {'tutor_schedules': tutor_schedules})
 
 
 def add_session(request):

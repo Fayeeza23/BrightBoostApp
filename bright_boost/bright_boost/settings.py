@@ -12,8 +12,30 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+# settings.py
+
+import os
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Other settings in your settings file
+
+
+# Define the path to your static files
+STATIC_URL = '/static/'
+
+# Add the directories where static files will be collected during production
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+# Add the directories where static files will be served from during development
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     'brightBoostApp'
 ]
 
@@ -135,3 +158,4 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/dashboard/'
+

@@ -1,24 +1,211 @@
-<!-- {% extends 'base.html' %} -->
-  
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Krub:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        {% comment %} /* NAVBAR */ {% endcomment %}
+        nav {
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            right: 0;
+            padding: 1em;
+            background-color: #3D1959;
+            color: #E5DC8D;   
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex; 
+            align-items: center; 
+        }
+
+        .logo {
+            font-family: Julius Sans One;
+            font-weight: 400;
+            font-size: 1.4em;
+            margin-left: 10px; 
+        }
+
+        .star-img {
+            width: 40px;
+            margin-left: 10px; 
+        }
+
+        .nav-links {
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #E5DC8D;
+            border-right: 1px solid;
+            padding-right: 0.2em;
+            font-weight: bold;
+            margin-left: 0.5em; 
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f9f9f9;
+        }
+
+        /* FORM DESIGN */
+        body {
+            margin: 0;
+            padding-top: 61px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            font-family: Julius Sans One;
+            text-align: center;
+            margin: 1em 1em auto 1em;
+            color: #3D1959;
+        }
+
+        .grid-container {
+            display: grid;
+            font: 0.9em 'Krub', sans-serif;;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8em;
+            padding: 2.5em;
+            border-radius: 3em;
+            margin: 2em;
+            background-color: #3D1959;
+            color: aliceblue;
+            box-shadow: 3px 4px 3px #24033c; 
+        }
+
+        .grid-container label {
+            text-align: right;
+        }
+
+        .grid-container input,
+        .grid-container button {
+            grid-column: span 1;
+        }
+
+        .grid-container .button {
+            grid-column: span 2;
+            text-align: center;
+        }
+
+        .grid-container .button button {
+            background-color: #f9f9f9;
+            color: #3D1959;
+            border: 3px solid #E5DC8D;
+            padding: 0.6em 0.8em;
+            border-radius: 1em;
+            cursor: pointer;
+        }
+
+        .grid-container .button {
+            justify-self: center;
+            margin-top: 1em;
+        }
+        .frame{
+            border-radius: 3em;
+            border: 1px solid #3D1959;
+            margin-top: 5%;
+        }
+
+        @media only screen and (max-width: 600px) {
+        .frame{
+            margin: 5%;
+        }}
+        
+        /*A little bit responsiveness*/
+        @media only screen and (max-width: 500px) {
+        h1{
+            font-size: 1.5em;
+            }
+            .nav-links {
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-links a {
+            border-bottom:1px solid #E5DC8D;
+            border-right: 0;
+            padding-top: 0.1em;
+        }
+        .frame{
+            margin-top: 5em;
+        }
+        }
+
+        
+        @media only screen and (max-width: 400px) {
+        h1{
+            font-size: 1em;
+            }
+        .grid-container{
+            font-size: 0.8em;
+            padding: 2em;
+        }
+        }
+
+        @media only screen and (max-width: 300px) {
+        h1{
+            font-size: 0.8em;
+            }
+        .grid-container{
+            font-size: 0.7em;
+        }
+        .nav-links a {
+            font-size: 0.8em;
+        }
+        .frame{
+            padding: 0;
+        }
+        }
+    </style>
+
+    <title>Session Information Submission</title>
 </head>
 <body>
-  {% block content %}
-  <h1>Add Session</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Session</button>
-  </form>
-  
+    <nav>
+        <div class="logo-container">
+            <div class="logo">
+                BRIGHT <br/> BOOST 
+            </div>
+            <img class="star-img" src="{% static 'star.png' %}"> 
+        </div>
+        <div class="nav-links">
+          <a href="{% url 'home' %}">Schedule</a>
+          <a href="{% url 'sessions_list' %}">Session</a>
+            <a href="#">Question</a>
+            <a href="#">Reports</a>
+        </div>
+    </nav>
+    <!--FORM-->
+    <div class="frame">
+        <h1>Submit Session</h1>
+        <form method="POST" class="grid-container">
+          {% csrf_token %}
+            {{form}}          
+          <div class="button">
+              <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+  </body>
   {% endblock %}
-  <a href="{% url 'home' %}">Home</a>
-</body>
 </html>
+
 
 

@@ -1,7 +1,7 @@
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
-  {% block content %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Krub:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        body{
-            background-image:url("{% static 'background.jpeg' %}");
-        }
-        /* NAVBAR */
+        {% comment %} /* NAVBAR */ {% endcomment %}
         nav {
             position: fixed; 
             top: 0; 
@@ -73,7 +70,19 @@
             justify-content: center;
             background-color: #f5f5f5;
         }
+        .go-back-button {
+            text-align: center;
+            margin-top: 1em;
+        }
 
+        .go-back-button a {
+            text-decoration: none;
+            background-color: #3D1959;
+            color: #fff;
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+            font-weight: bold;
+        }
         h1 {
             font-family: Julius Sans One;
             text-align: center;
@@ -176,55 +185,9 @@
             padding: 0;
         }
         }
-
-        /* Login Form */
-        .login-container {
-            margin: 2em;
-            margin-top: 8em;
-            padding: 2em 4em;
-            background-color: #fff;
-            border-radius: 1em;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .login-container h2 {
-            font-family: 'Julius Sans One';
-            color: #3D1959;
-        }
-
-        .login-form {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.8em;
-            margin-top: 1em;
-        }
-
-        .login-form label {
-            text-align: left;
-        }
-
-        .login-form input {
-            padding: 0.5em;
-            border: 1px solid #ccc;
-            border-radius: 0.5em;
-            font-size: 0.9em;
-        }
-
-        .login-form .button button {
-            background-color:#3D1959 ;
-            color:  #f9f9f9;
-            border: 3px solid #E5DC8D;
-            padding: 0.6em 0.8em;
-            border-radius: 1em;
-            cursor: pointer;
-        }
-
-        .login-form .button {
-            justify-self: center;
-            margin-top: 1em;
-        }
     </style>
-    <title>Login</title>
+
+    <title>Student Information Submission</title>
 </head>
 <body>
     <nav>
@@ -234,20 +197,28 @@
             </div>
             <img class="star-img" src="{% static 'star.png' %}"> 
         </div>
-    </nav>
-
-    <!-- Login Form -->
-    <div class="login-container">
-        <h1>Registration</h1>
-        <form method='POST' class="login-form">
-            {% csrf_token %}
-           {{form.as_p}} 
-           <div class="button">
-            <button type="submit" value="Register" >Register</button>
+        <div class="nav-links">
+            <a href="{% url 'logout' %}">Logout</a>
         </div>
-            <p style="text-align:center;">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </nav>
+    <!--FORM-->
+    <div class="frame">
+        <h1>Record Student Information</h1>
+        <form method="POST" class="grid-container">
+          {% csrf_token %}
+            {{form}}          
+          <div class="button">
+              <button type="submit">Submit</button>
+          </div>
         </form>
-    </div>
-    {%endblock%}
-</body>
+      </div>
+        <!-- Go Back Button -->
+        <div class="go-back-button">
+            <a href="{% url 'dashboard' %}">Go Back</a>
+        </div>
+  </body>
+  {% endblock %}
 </html>
+
+
+

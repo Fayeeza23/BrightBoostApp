@@ -9,13 +9,16 @@ urlpatterns = [
     path('',views.homepage,name='home'),
     path('register/', views.registerView, name='register'),
     path('login/', LoginView.as_view(), name='login'),
-    path('timetable/', views.display_timetable, name='timetable'),
-
-    # path('student_dashboard/', views.student_dashboard, name='student_dashboard'),
+    path('logout/', LogoutView.as_view(next_page='login'), name="logout"),
     path('dashboard/', views.dashboardView, name='dashboard'),
-    path('logout/', LogoutView.as_view(next_page='home'), name="logout"),
+
+# Admin
+    path('view_user/', views.viewUser, name='view_user'),
+    path('add_student/', views.add_student, name='add_student'),
+    path('add_tutor/', views.add_tutor, name='add_tutor'),
+
+# Tutor
     path('add_session/', views.add_session, name='add_session'),
     path('sessions_list/', views.sessions_list, name='sessions_list')
-  
-    # Define other URL patterns here
+
 ]

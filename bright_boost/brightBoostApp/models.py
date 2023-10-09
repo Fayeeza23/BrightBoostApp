@@ -6,8 +6,7 @@ from django.db import models
 #   lastName = models.CharField(max_length=255)
 #   subjectName = models.CharField(max_length=255)
 
-from django.utils import timezone
-from datetime import date
+
 class Session(models.Model):
     date = models.DateField()
     session_time = models.TimeField()
@@ -22,4 +21,11 @@ class TutorSchedule(models.Model):
     day_of_week = models.CharField(max_length=20)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    room= models.CharField(max_length=80)
+    room = models.CharField(max_length=80)
+
+class Students(models.Model):
+    student_id= models.CharField(max_length=80)
+    student_name = models.CharField(max_length=100)
+    student_email = models.EmailField(max_length=100)
+
+

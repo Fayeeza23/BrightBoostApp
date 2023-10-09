@@ -228,17 +228,11 @@
 </head>
 <body>
     <nav>
-        <div class="logo-container">
+        <div class="logo-container"  onclick="window.location.href='{% url 'home' %}';" style="cursor: pointer;">
             <div class="logo">
                 BRIGHT <br/> BOOST 
             </div>
             <img class="star-img" src="{% static 'star.png' %}"> 
-        </div>
-        <div class="nav-links">
-            <a href="{% url 'home' %}">Schedule</a>
-            <a href="#">Session</a>
-            <a href="#">Question</a>
-            <a href="#">Reports</a>
         </div>
     </nav>
 

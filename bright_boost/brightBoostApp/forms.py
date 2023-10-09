@@ -1,5 +1,5 @@
 from django import forms
-from .models import Session, TutorSchedule
+from .models import Session, TutorSchedule, Students
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -15,7 +15,12 @@ class SessionForm(forms.ModelForm):
 class TutorScheduleForm(forms.ModelForm):
     class Meta:
         model = TutorSchedule
-        fields = ['tutor_name', 'day_of_week', 'start_time', 'end_time']
+        fields = ['tutor_name', 'day_of_week', 'start_time', 'end_time','room']
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Students
+        fields = ['student_id','student_name','student_email']
 
 # The `CustomRegistrationForm` class is a subclass of `UserCreationForm` that adds a `user_role` field
 # with choices for teacher, student, and head.
@@ -23,8 +28,8 @@ class TutorScheduleForm(forms.ModelForm):
 class CustomRegistrationForm(UserCreationForm):
     USER_ROLES = (
         ('teacher', 'Teacher'),
-        ('staff', 'Staff'),
-        # ('admin', 'Admin'),
+        # ('staff', 'Staff'),
+        ('admin', 'Admin'),
     )
     user_role = forms.ChoiceField(choices=USER_ROLES)
 

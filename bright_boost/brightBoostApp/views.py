@@ -1,9 +1,7 @@
-
 # Create views here.
-
 from django.shortcuts import render, redirect
-from .models import Session, TutorSchedule
-from .forms import SessionForm
+from .models import Session, TutorSchedule, Students
+from .forms import SessionForm, StudentForm, TutorScheduleForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group 
@@ -14,12 +12,21 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 
 @login_required
 def dashboardView(request):
-    return render (request,'dashboard.html')
+    user = request.user
+    user_groups = user.groups.values_list('name', flat=True)  # Get a list of user's group names
+    if 'Admin' in user_groups:
+        # User is in the 'Admin' group
+        return render(request, 'admin_dashboard.html')
+    elif 'Teacher' in user_groups:
+        # User is in the 'Teacher' group
+        return render(request, 'teacher_dashboard.html')
 
+# App Homepage
+def homepage(request):
+    tutor_schedules = TutorSchedule.objects.all()
+    return render(request, 'home.html', {'tutor_schedules': tutor_schedules})
 
-def home(request):
-    return render(request,'index.html')
-
+# Registration Page
 def registerView(request):
     if request.method == "POST":
         form = CustomRegistrationForm(request.POST)
@@ -30,34 +37,18 @@ def registerView(request):
 
             # Create a user with the provided data
             user = User.objects.create_user(username=username, password=password)
-            
             # Add the user to the selected group based on the user_role
             if user_role == 'teacher':
                 user.groups.add(Group.objects.get(name='Teacher'))
-            elif user_role == 'student':
-                user.groups.add(Group.objects.get(name='Student'))
-            elif user_role == 'staff':
-                user.groups.add(Group.objects.get(name='Staff'))
-
-            # Log in the user after registration
-            auth_login(request, user)
-            if user_role == 'student':
-                return redirect('display_timetable')  # Redirect to the dashboard or any other desired URL after registration
+            elif user_role == 'admin':
+                user.groups.add(Group.objects.get(name='Admin'))
     else:
         form = CustomRegistrationForm()
 
     return render(request, 'registration.html', {'form': form})
 
-
-def display_timetable(request):
-    tutor_schedules = TutorSchedule.objects.all()
-    return render(request, 'display_timetable.html', {'tutor_schedules': tutor_schedules})
-
-def homepage(request):
-    tutor_schedules = TutorSchedule.objects.all()
-    return render(request, 'home.html', {'tutor_schedules': tutor_schedules})
-
-
+# Add Session Page 
+@login_required
 def add_session(request):
     if request.method == 'POST':
         form = SessionForm(request.POST)
@@ -68,8 +59,40 @@ def add_session(request):
         form = SessionForm()
     return render(request, 'add_session.html', {'form': form})
 
+# Show Session Page
 def sessions_list(request):
     sessions = Session.objects.all()  # Retrieve all session objects from the database
     return render(request, 'sessions_list.html', {'sessions': sessions})
 
 
+# Admin
+def viewUser(request):
+    sessions = Session.objects.all()  # Retrieve all session objects from the database
+    students = Students.objects.all()  
+    context = {
+        'sessions': sessions,
+        'students':  students,
+    }
+    return render(request, 'view_user.html', context)
+
+@login_required
+def add_student(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('view_user')
+    else:
+        form = StudentForm()
+    return render(request, 'add_student.html', {'form': form})
+
+@login_required
+def add_tutor(request):
+    if request.method == 'POST':
+        form = TutorScheduleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('view_user')
+    else:
+        form = TutorScheduleForm()
+    return render(request, 'add_tutor.html', {'form': form})

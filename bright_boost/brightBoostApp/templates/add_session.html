@@ -70,7 +70,19 @@
             justify-content: center;
             background-color: #f5f5f5;
         }
+        .go-back-button {
+            text-align: center;
+            margin-top: 1em;
+        }
 
+        .go-back-button a {
+            text-decoration: none;
+            background-color: #3D1959;
+            color: #fff;
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+            font-weight: bold;
+        }
         h1 {
             font-family: Julius Sans One;
             text-align: center;
@@ -179,17 +191,14 @@
 </head>
 <body>
     <nav>
-        <div class="logo-container">
+        <div class="logo-container"  onclick="window.location.href='{% url 'home' %}';" style="cursor: pointer;">
             <div class="logo">
                 BRIGHT <br/> BOOST 
             </div>
             <img class="star-img" src="{% static 'star.png' %}"> 
         </div>
         <div class="nav-links">
-          <a href="{% url 'home' %}">Schedule</a>
-          <a href="{% url 'sessions_list' %}">Session</a>
-            <a href="#">Question</a>
-            <a href="#">Reports</a>
+            <a href="{% url 'logout' %}">Logout</a>
         </div>
     </nav>
     <!--FORM-->
@@ -203,6 +212,11 @@
           </div>
         </form>
       </div>
+             <!-- Go Back Button -->
+    <div class="go-back-button">
+        <a href="{% url 'dashboard' %}">Go Back</a>
+      </div>
+    
   </body>
   {% endblock %}
 </html>

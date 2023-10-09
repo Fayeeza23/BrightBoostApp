@@ -150,17 +150,14 @@
     </head>
     <body>
     <nav>
-        <div class="logo-container">
+        <div class="logo-container"  onclick="window.location.href='{% url 'home' %}';" style="cursor: pointer;">
             <div class="logo">
                 BRIGHT <br/> BOOST 
             </div>
-            <img class="star-img"  src="{% static 'star.png' %}"> 
+            <img class="star-img" src="{% static 'star.png' %}"> 
         </div>
         <div class="nav-links">
-            <a href="{% url 'home' %}">Schedule</a>
-            <a href="{% url 'add_session' %}">Session</a>
-            <a href="#">Question</a>
-            <a href="#">Reports</a>
+            <a href="{% url 'logout' %}">Logout</a>
         </div>
     </nav>
     <!-- Table Section -->
@@ -195,13 +192,13 @@
         </table>
         <div class="button">
             {% comment %} <a href="{% url 'login' %}">utor & Admin Login</a> {% endcomment %}
-            <form method="GET" action="{% url 'home' %}">
-                <button type="submit">Back to Timetable</button>
+            <form method="GET" action="{% url 'dashboard' %}">
+                <button type="submit">Go Back</button>
             </form>
         </div>
     </section>
     </body>
-    {% endblock content %}
+    {% endblock%}
     </html>
 </body>
 </html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="styles/admin.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Krub:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>User Statistics</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="logo-container">
+        <div class="logo">
+          BRIGHT <br />
+          BOOST
+        </div>
+        <img class="star-img" src="img/star.png" />
+      </div>
+      <nav class="site-navigation">
+        <ul class="nav">
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="viewUser.html">View user</a></li>
+          <li><a href="uploadTimetable.html">Upload Timetable</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="statistics-chart">
+      <!-- Line-chart1 -->
+      <h1>Attendance</h1>
+      <p style="color: blue; text-align: right">English</p>
+      <p style="color: red; text-align: right">Mathematics</p>
+      <div class="slds-p-top--medium">
+        <div>
+          <svg
+            version="1.2"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="quiz-graph"
+          >
+            <defs>
+              <pattern
+                id="grid"
+                width="50"
+                height="50"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 50 0 L 0 0 0 50"
+                  fill="none"
+                  stroke="#e5e5e5"
+                  stroke-width="1"
+                ></path>
+              </pattern>
+            </defs>
+            <rect
+              x="50"
+              width="calc(100% - 50px)"
+              height="300px"
+              fill="url(#grid)"
+              stroke="gray"
+            ></rect>
+
+            <g class="label-title">
+              <text x="-160" y="5" transform="rotate(-90)">Student Number</text>
+            </g>
+            <g class="label-title">
+              <text x="50%" y="350">Date</text>
+            </g>
+            <g class="x-labels">
+              <text x="150" y="320">July 1</text>
+              <text x="250" y="320">July 2</text>
+              <text x="350" y="320">July 3</text>
+              <text x="450" y="320">July 4</text>
+              <text x="550" y="320">July 5</text>
+              <text x="650" y="320">July 6</text>
+              <text x="750" y="320">July 7</text>
+            </g>
+            <g class="y-labels">
+              <text x="42" y="5">30</text>
+              <text x="42" y="55">25</text>
+              <text x="42" y="105">20</text>
+              <text x="42" y="155">15</text>
+              <text x="42" y="205">10</text>
+              <text x="42" y="255">5</text>
+              <text x="42" y="305">0</text>
+            </g>
+
+            <!-- Line-English -->
+
+            <polyline
+              fill="none"
+              stroke="red"
+              stroke-width="2"
+              points="
+                50,0
+                150,100
+                250,80
+                350,160
+                450,100
+                550,100
+                650,150
+                750,200
+                "
+            ></polyline>
+            <g>
+              <circle
+                class="quiz-graph-start-dot"
+                cx="50"
+                cy="0"
+                data-value="7.2"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="150"
+                cy="100"
+                data-value="8.1"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="250"
+                cy="80"
+                data-value="7.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="350"
+                cy="160"
+                data-value="6.8"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="450"
+                cy="100"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="550"
+                cy="100"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="650"
+                cy="150"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="750"
+                cy="200"
+                data-value="6.7"
+                r="6"
+              ></circle>
+            </g>
+
+            <!-- Line-Maths -->
+            <polyline
+              fill="none"
+              stroke="blue"
+              stroke-width="2"
+              points="
+              50,10
+              150,50
+              250,60
+              350,150
+              450,80
+              550,80
+              650,140
+              750,100
+              "
+            ></polyline>
+            <g>
+              <circle
+                class="quiz-graph-start-dot"
+                cx="50"
+                cy="10"
+                data-value="7.2"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="150"
+                cy="50"
+                data-value="8.1"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="250"
+                cy="60"
+                data-value="7.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="350"
+                cy="150"
+                data-value="6.8"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="450"
+                cy="80"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="550"
+                cy="80"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="650"
+                cy="140"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="750"
+                cy="100"
+                data-value="6.7"
+                r="6"
+              ></circle>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <!-- Line-chart2 -->
+      <h1>Questions</h1>
+      <p style="color: blue; text-align: right">English</p>
+      <p style="color: red; text-align: right">Mathematics</p>
+      <div class="slds-p-top--medium">
+        <div>
+          <svg
+            version="1.2"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="quiz-graph"
+          >
+            <defs>
+              <pattern
+                id="grid"
+                width="50"
+                height="50"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 50 0 L 0 0 0 50"
+                  fill="none"
+                  stroke="#e5e5e5"
+                  stroke-width="1"
+                ></path>
+              </pattern>
+            </defs>
+            <rect
+              x="50"
+              width="calc(100% - 50px)"
+              height="300px"
+              fill="url(#grid)"
+              stroke="gray"
+            ></rect>
+
+            <g class="label-title">
+              <text x="-160" y="5" transform="rotate(-90)">
+                Question Number
+              </text>
+            </g>
+            <g class="label-title">
+              <text x="50%" y="350">Date</text>
+            </g>
+            <g class="x-labels">
+              <text x="150" y="320">July 1</text>
+              <text x="250" y="320">July 2</text>
+              <text x="350" y="320">July 3</text>
+              <text x="450" y="320">July 4</text>
+              <text x="550" y="320">July 5</text>
+              <text x="650" y="320">July 6</text>
+              <text x="750" y="320">July 7</text>
+            </g>
+            <g class="y-labels">
+              <text x="42" y="5">30</text>
+              <text x="42" y="55">25</text>
+              <text x="42" y="105">20</text>
+              <text x="42" y="155">15</text>
+              <text x="42" y="205">10</text>
+              <text x="42" y="255">5</text>
+              <text x="42" y="305">0</text>
+            </g>
+
+            <!-- Line-English -->
+
+            <polyline
+              fill="none"
+              stroke="red"
+              stroke-width="2"
+              points="
+                50,0
+                150,100
+                250,80
+                350,160
+                450,100
+                550,100
+                650,150
+                750,200
+                "
+            ></polyline>
+            <g>
+              <circle
+                class="quiz-graph-start-dot"
+                cx="50"
+                cy="0"
+                data-value="7.2"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="150"
+                cy="100"
+                data-value="8.1"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="250"
+                cy="80"
+                data-value="7.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="350"
+                cy="160"
+                data-value="6.8"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="450"
+                cy="100"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="550"
+                cy="100"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="650"
+                cy="150"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="750"
+                cy="200"
+                data-value="6.7"
+                r="6"
+              ></circle>
+            </g>
+
+            <!-- Line-Maths -->
+            <polyline
+              fill="none"
+              stroke="blue"
+              stroke-width="2"
+              points="
+              50,10
+              150,50
+              250,60
+              350,150
+              450,80
+              550,80
+              650,140
+              750,100
+              "
+            ></polyline>
+            <g>
+              <circle
+                class="quiz-graph-start-dot"
+                cx="50"
+                cy="10"
+                data-value="7.2"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="150"
+                cy="50"
+                data-value="8.1"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="250"
+                cy="60"
+                data-value="7.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="350"
+                cy="150"
+                data-value="6.8"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="450"
+                cy="80"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="550"
+                cy="80"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="650"
+                cy="140"
+                data-value="6.7"
+                r="6"
+              ></circle>
+              <circle
+                class="quiz-graph-dot"
+                cx="750"
+                cy="100"
+                data-value="6.7"
+                r="6"
+              ></circle>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

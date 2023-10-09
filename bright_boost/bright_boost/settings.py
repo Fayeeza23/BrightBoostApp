@@ -106,8 +106,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'brightboost',
-        'USER': 'fayeeza',
-        'PASSWORD': '123456',
+        'USER': 'yourname',
+        'PASSWORD': 'pass',
         'HOST': 'localhost',
         'PORT': '3306',
          'OPTIONS': {

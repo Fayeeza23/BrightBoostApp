@@ -1,5 +1,5 @@
 from django import forms
-from .models import Session, TutorSchedule, Students
+from .models import Session, TutorSchedule, Students, Question
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -8,14 +8,19 @@ from django.contrib.auth.models import User
 class SessionForm(forms.ModelForm):
     class Meta:
         model = Session
-        fields = ['date','session_time','room_no','instructor', 'students_attended', 'questions_answered', 'subject_area']
+        fields = ['date','session_time','room_no','instructor', 'students_attended', 'subject_area']
+
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ['question_no','question_asked','question_answered','instructor','subject_area']
 
 # The TutorScheduleForm class is a form that allows users to input information about a tutor's
 # schedule.
 class TutorScheduleForm(forms.ModelForm):
     class Meta:
         model = TutorSchedule
-        fields = ['tutor_name', 'day_of_week', 'start_time', 'end_time','room']
+        fields = ['tutor_name', 'day_of_week', 'start_time', 'end_time','room','subject_area']
 
 class StudentForm(forms.ModelForm):
     class Meta:

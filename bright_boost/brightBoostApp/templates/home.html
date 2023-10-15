@@ -149,7 +149,7 @@
             }
         }
     </style>
-    <title>Schedule Homepage</title>
+    <title>Homepage</title>
 </head>
 <body>
     <nav>
@@ -170,6 +170,7 @@
                 <tr>
                     <th>Tutor Name</th>
                     <th>Date</th>
+                    <th>Subject</th>
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th>Room</th>
@@ -180,12 +181,15 @@
                   <tr>
                     <td>{{ tutor_schedule.tutor_name }}</td>
                     <td>{{ tutor_schedule.day_of_week }}</td>
+                    <td>{{ tutor_schedule.subject_area}}</td>
                     <td>{{ tutor_schedule.start_time }}</td>
                     <td>{{ tutor_schedule.end_time }}</td>
                     <td>{{ tutor_schedule.room }}</td>
                     
-                  </tr>
+                </tr>
                 {% endfor %}
+                
+
               </tbody>
         </table>
         <div class="button">

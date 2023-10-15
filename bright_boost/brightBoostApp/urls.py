@@ -16,9 +16,12 @@ urlpatterns = [
     path('view_user/', views.viewUser, name='view_user'),
     path('add_student/', views.add_student, name='add_student'),
     path('add_tutor/', views.add_tutor, name='add_tutor'),
+    path('weekly_session_statistics/',views.weekly_session_statistics,name='weekly_session_statistics'),
 
 # Tutor
     path('add_session/', views.add_session, name='add_session'),
-    path('sessions_list/', views.sessions_list, name='sessions_list')
+    path('sessions_list/', views.sessions_list, name='sessions_list'),
+    path('add_question/', views.add_question, name='add_question'),
+
 
 ]

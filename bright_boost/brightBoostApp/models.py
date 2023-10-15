@@ -13,7 +13,13 @@ class Session(models.Model):
     room_no =models.CharField(max_length=80)
     instructor = models.CharField(max_length=100 )
     students_attended = models.PositiveIntegerField()
-    questions_answered = models.PositiveIntegerField()
+    subject_area = models.CharField(max_length=100)
+
+class Question(models.Model):
+    question_no = models.CharField(max_length=80)
+    question_asked = models.TimeField()
+    question_answered = models.TimeField()
+    instructor = models.CharField(max_length=100 )
     subject_area = models.CharField(max_length=100)
 
 class TutorSchedule(models.Model):
@@ -22,6 +28,8 @@ class TutorSchedule(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     room = models.CharField(max_length=80)
+    subject_area = models.CharField(max_length=100)
+
 
 class Students(models.Model):
     student_id= models.CharField(max_length=80)

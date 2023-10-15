@@ -176,7 +176,17 @@
             padding: 0;
         }
         }
+        .go-back-button {
+            margin-top: 1em;
+        }
 
+        .go-back-button a {
+            text-decoration: none;
+            background-color: #3D1959;
+            color: #fff;
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+        }
         /* Login Form */
         .login-container {
             margin: 2em;
@@ -224,7 +234,7 @@
             margin-top: 1em;
         }
     </style>
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
     <nav>
@@ -233,6 +243,9 @@
                 BRIGHT <br/> BOOST 
             </div>
             <img class="star-img" src="{% static 'star.png' %}"> 
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'logout' %}">Logout</a>
         </div>
     </nav>
 
@@ -244,10 +257,14 @@
            {{form.as_p}} 
            <div class="button">
             <button type="submit" value="Register" >Register</button>
+            <!-- Go Back Button -->
         </div>
-            <p style="text-align:center;">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        <div class="go-back-button">
+           <a href="{% url 'dashboard' %}">Go Back</a>
+       </div>
         </form>
     </div>
+     
     {%endblock%}
 </body>
 </html>

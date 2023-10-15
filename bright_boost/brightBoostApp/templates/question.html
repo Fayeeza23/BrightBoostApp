@@ -187,7 +187,7 @@
         }
     </style>
 
-    <title>Create session</title>
+    <title>Question Information Submission</title>
 </head>
 <body>
     <nav>
@@ -203,7 +203,7 @@
     </nav>
     <!--FORM-->
     <div class="frame">
-        <h1>Record Tutor Class Information</h1>
+        <h1>Submit Question</h1>
         <form method="POST" class="grid-container">
           {% csrf_token %}
             {{form}}          
@@ -212,10 +212,11 @@
           </div>
         </form>
       </div>
-        <!-- Go Back Button -->
-        <div class="go-back-button">
-            <a href="{% url 'dashboard' %}">Go Back</a>
-        </div>
+             <!-- Go Back Button -->
+    <div class="go-back-button">
+        <a href="{% url 'dashboard' %}">Go Back</a>
+      </div>
+    
   </body>
   {% endblock %}
 </html>

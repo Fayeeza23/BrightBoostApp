@@ -242,11 +242,10 @@
         <form method="POST" class="login-form">
           {% csrf_token %}
           {{ form}}
-
           <div class="button">
               <button type="submit" value="Login" >Login</button>
           </div>
-          <p  style="text-align:center;">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+          {% comment %} <p style="text-align:center;">Don't have an account? <a href="{% url 'register' %}">Register</a></p> {% endcomment %}
       </form>
     </div>
     {%endblock%}

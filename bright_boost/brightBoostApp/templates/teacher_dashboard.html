@@ -73,7 +73,7 @@
                 border-radius: 1em;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(1, 1fr);
                 gap: 1em;
             }
     
@@ -137,7 +137,7 @@
                 margin-top: 8em;
             }
         </style>
-        <title>Admin Page</title>
+        <title>Tutor Dashboard</title>
     </head>
     <body>
         <nav>
@@ -160,6 +160,10 @@
         <div class="admin-item">
           <span class="admin-icon">➕</span>
           <a href="{% url 'add_session' %}">Add Session</a>
+        </div>
+        <div class="admin-item">
+          <span class="admin-icon">➕</span>
+          <a href="{% url 'add_question' %}">Add Question</a>
         </div>
         <div class="admin-item">
             <span class="admin-icon">👤</span>

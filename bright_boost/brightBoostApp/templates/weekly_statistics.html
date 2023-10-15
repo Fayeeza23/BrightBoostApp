@@ -77,6 +77,16 @@
                 gap: 1em;
             }
     
+            .container {
+                margin: 2em;
+                margin-top: 4em;
+                padding: 2em;
+                border-radius: 1em;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1em;
+            }
+    
             .admin-item {
                 background-color: #3D1959;
                 color: #fff;
@@ -127,7 +137,7 @@
                 margin-top: 8em;
             }
         </style>
-        <title>Admin Dashboard</title>
+        <title>Weekly Statistics Report</title>
     </head>
     <body>
         <nav>
@@ -142,38 +152,27 @@
             </div>
         </nav>
     
-        <h2>Welcome, {{user.username}}</h2>
+        <h2></h2>
         
-        <!-- Admin Page -->
-        <div class="admin-container">
-            <div class="admin-item">
-                <span class="admin-icon">➕</span>
-                <a href="{% url 'add_tutor' %}">Create Session</a>
-            </div>
-            <div class="admin-item">
-                <span class="admin-icon">➕</span>
-                <a href="{% url 'add_student' %}">Add Student</a>
-            </div>
-            <div class="admin-item">
-                <span class="admin-icon">👤</span>
-                <a href="{% url 'sessions_list' %}">View Session</a>
-            </div>
-            <div class="admin-item">
-                <span class="admin-icon">👥</span>
-                <a href="{% url 'view_user' %}">View User</a>
-            </div>
-            <div class="admin-item">
-                <span class="admin-icon">👥</span>
-                <a href="{% url 'register' %}">Register New User</a>
-            </div>
-            <div class="admin-item">
-                <span class="admin-icon">👥</span>
-                <a href="{% url 'weekly_session_statistics' %}">View Statistics</a>
-            </div>
-        </div>
-           <!-- Go Back Button -->
+    <!-- Statistics Page -->
+    <div class="admin-container">
+        <h1>Weekly Session Statistics</h1>
+        <table>
+            <tr>
+                <th>Week</th>
+                <th>Total Students</th>
+            </tr>
+            {% for stat in weekly_stats %}
+            <tr>
+                <td>{{ stat.week|date:"F d, Y" }}</td>
+                <td>{{ stat.total_students }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+      </div>
+       <!-- Go Back Button -->
     <div class="go-back-button">
-        <a href="{% url 'login' %}">Go Back</a>
+        <a href="{% url 'dashboard' %}">Go Back</a>
       </div>
     </body>
 {% endblock %}

@@ -1,7 +1,7 @@
 # Create views here.
 from django.shortcuts import render, redirect
 from .models import Session, TutorSchedule, Students
-from .forms import SessionForm, StudentForm, TutorScheduleForm
+from .forms import QuestionForm, SessionForm, StudentForm, TutorScheduleForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group 
@@ -27,6 +27,7 @@ def homepage(request):
     return render(request, 'home.html', {'tutor_schedules': tutor_schedules})
 
 # Registration Page
+@login_required
 def registerView(request):
     if request.method == "POST":
         form = CustomRegistrationForm(request.POST)
@@ -60,10 +61,22 @@ def add_session(request):
     return render(request, 'add_session.html', {'form': form})
 
 # Show Session Page
+@login_required
 def sessions_list(request):
     sessions = Session.objects.all()  # Retrieve all session objects from the database
     return render(request, 'sessions_list.html', {'sessions': sessions})
 
+# Add Session Page 
+@login_required
+def add_question(request):
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sessions_list')
+    else:
+        form = QuestionForm()
+    return render(request, 'question.html', {'form': form})
 
 # Admin
 def viewUser(request):
@@ -96,3 +109,13 @@ def add_tutor(request):
     else:
         form = TutorScheduleForm()
     return render(request, 'add_tutor.html', {'form': form})
+
+
+from django.db.models import Sum
+from django.db.models.functions import TruncWeek
+@login_required
+def weekly_session_statistics(request):
+    # Group sessions by week and calculate the sum of students attended
+    weekly_stats = Session.objects.annotate(week=TruncWeek('date')).values('week').annotate(total_students=Sum('students_attended')).order_by('week')
+
+    return render(request, 'weekly_statistics.html', {'weekly_stats': weekly_stats})

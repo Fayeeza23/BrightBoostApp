@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    {% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Krub:wght@500;700&display=swap" rel="stylesheet">
+        
+        <style>
+            body{
+                background-image:url("{% static 'background.jpeg' %}");
+            }
+            /* NAVBAR */
+            nav {
+                position: fixed; 
+                top: 0; 
+                left: 0;
+                right: 0;
+                padding: 1em;
+                background-color: #3D1959;
+                color: #E5DC8D;   
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+            }
+    
+            .logo-container {
+                display: flex; 
+                align-items: center; 
+            }
+    
+            .logo {
+                font-family: Julius Sans One;
+                font-weight: 400;
+                font-size: 1.4em;
+                margin-left: 10px; 
+            }
+    
+            .star-img {
+                width: 40px;
+                margin-left: 10px; 
+            }
+    
+            .nav-links {
+                text-align: right;
+                margin-right: 10px;
+            }
+    
+            .nav-links a {
+                text-decoration: none;
+                color: #E5DC8D;
+                border-right: 1px solid;
+                padding-right: 0.2em;
+                font-weight: bold;
+                margin-left: 0.5em; 
+                transition: color 0.3s;
+            }
+    
+            .nav-links a:hover {
+                color: #f9f9f9;
+            }
+    
+            /* ADMIN PAGE */
+            .admin-container {
+                margin: 2em;
+                margin-top: 4em;
+                padding: 2em;
+                background-color: #fff;
+                border-radius: 1em;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1em;
+            }
+    
+            .container {
+                margin: 2em;
+                margin-top: 4em;
+                padding: 2em;
+                border-radius: 1em;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1em;
+            }
+    
+            .admin-item {
+                background-color: #3D1959;
+                color: #fff;
+                padding: 1em;
+                border-radius: 1em;
+                text-align: center;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+    
+            .admin-item:hover {
+                background-color: #E5DC8D;
+                color: #3D1959;
+            }
+    
+            .admin-item a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+            }
+    
+            .admin-icon {
+                font-size: 2em;
+                margin-bottom: 0.5em;
+            }
+    
+            /* Additional Styles */
+            h2 {
+                font-family: Julius Sans One;
+                color: #3D1959;
+                text-align: center;
+            }
+    
+            .go-back-button {
+                text-align: center;
+                margin-top: 1em;
+            }
+    
+            .go-back-button a {
+                text-decoration: none;
+                background-color: #3D1959;
+                color: #fff;
+                padding: 0.5em 1em;
+                border-radius: 0.5em;
+                font-weight: bold;
+            }
+            h2{
+                margin-top: 8em;
+            }
+        </style>
+        <title>Weekly Statistics Report</title>
+    </head>
+    <body>
+        <nav>
+            <div class="logo-container"  onclick="window.location.href='{% url 'home' %}';" style="cursor: pointer;">
+                <div class="logo">
+                    BRIGHT <br/> BOOST 
+                </div>
+                <img class="star-img" src="{% static 'star.png' %}"> 
+            </div>
+            <div class="nav-links">
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </nav>
+    
+        <h2></h2>
+        
+    <!-- Statistics Page -->
+    <div class="admin-container">
+        <h1>Weekly Session Statistics</h1>
+        <table>
+            <tr>
+                <th>Week</th>
+                <th>Total Students</th>
+            </tr>
+            {% for stat in weekly_stats %}
+            <tr>
+                <td>{{ stat.week|date:"F d, Y" }}</td>
+                <td>{{ stat.total_students }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+      </div>
+       <!-- Go Back Button -->
+    <div class="go-back-button">
+        <a href="{% url 'dashboard' %}">Go Back</a>
+      </div>
+    </body>
+{% endblock %}
+</html>

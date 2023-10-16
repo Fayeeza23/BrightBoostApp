@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Krub:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles/admin.css" rel="stylesheet" />
+    <style>
+      body {
+        align-items: center;
+      }
+    </style>
+    <title>Upload Timetable</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo-container">
+        <div class="logo">
+          BRIGHT <br />
+          BOOST
+        </div>
+        <img class="star-img" src="img/star.png" />
+      </div>
+
+      <nav class="site-navigation">
+        <ul class="nav">
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="viewUser.html">View user</a></li>
+          <li><a href="uploadTimetable.html">Upload Timetable</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--FORM-->
+
+    <div class="frame">
+      <h1>Upload Timetable</h1>
+      <form action="#" method="post" class="grid-container">
+        <label for="sessionId">Session ID:</label>
+        <input type="text" id="sessionId" name="sessionId" required />
+
+        <label for="sessionDate">Session Date:</label>
+        <input type="date" id="sessionDate" name="sessionDate" required />
+
+        <label for="sessionTime">Session Time:</label>
+        <input type="time" id="sessionTime" name="sessionTime" required />
+
+        <label for="roomNo">Room No:</label>
+        <input type="text" id="roomNo" name="roomNo" required />
+
+        <label for="instructorId">Instructor ID:</label>
+        <input type="text" id="instructorId" name="instructorId" required />
+
+        <div class="button">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

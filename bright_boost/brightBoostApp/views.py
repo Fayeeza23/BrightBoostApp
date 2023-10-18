@@ -8,6 +8,8 @@ from django.contrib.auth.models import User, Group
 from .forms import CustomRegistrationForm
 from django.contrib.auth.models import User, Group 
 from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.db.models import Sum
+from django.db.models.functions import TruncWeek
 
 
 @login_required
@@ -111,11 +113,12 @@ def add_tutor(request):
     return render(request, 'add_tutor.html', {'form': form})
 
 
-from django.db.models import Sum
-from django.db.models.functions import TruncWeek
 @login_required
 def weekly_session_statistics(request):
     # Group sessions by week and calculate the sum of students attended
     weekly_stats = Session.objects.annotate(week=TruncWeek('date')).values('week').annotate(total_students=Sum('students_attended')).order_by('week')
+    instructor= Session.objects.values('instructor').annotate(total_students=Sum('students_attended')).order_by('instructor').all()
+    subjects = Session.objects.all()
 
-    return render(request, 'weekly_statistics.html', {'weekly_stats': weekly_stats})
+    return render(request, 'weekly_statistics.html', {'weekly_stats': weekly_stats, 'subjects': subjects,'instructor': instructor})
+

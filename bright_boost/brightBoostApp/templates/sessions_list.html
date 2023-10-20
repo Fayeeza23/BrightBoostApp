@@ -145,7 +145,6 @@
             }
         }
     </style>
-    <title>Schedule Homepage</title>
     </head>
     <body>
     <nav>
@@ -162,7 +161,6 @@
     <!-- Table Section -->
     <section class="table-section">
         <h2>Passed sessions</h2>
-
         <table border="2">
             <thead>
                 <tr>
@@ -183,6 +181,30 @@
                         <td>{{ session.instructor }}</td> 
                         <td>{{ session.students_attended }}</td>
                         <td>{{ session.subject_area }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <section>
+        <h2>Questions count per sessions</h2>
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>Question Count</th>
+                    <th>Time of Question Asked</th>
+                    <th>Time of Question Answered</th>
+                    <th>Instructor</th>
+                    <th>Subject Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ques in question %}
+                    <tr>
+                        <td>{{  ques.question_no }}</td>
+                        <td>{{  ques.question_asked }}</td>
+                        <td>{{  ques.question_answered }}</td>
+                        <td>{{ ques.instructor }}</td> 
+                        <td>{{ ques.subject_area }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

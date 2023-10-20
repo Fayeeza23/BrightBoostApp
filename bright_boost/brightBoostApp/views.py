@@ -1,6 +1,6 @@
 # Create views here.
 from django.shortcuts import render, redirect
-from .models import Session, TutorSchedule, Students
+from .models import Question, Session, TutorSchedule, Students
 from .forms import QuestionForm, SessionForm, StudentForm, TutorScheduleForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -66,8 +66,13 @@ def add_session(request):
 @login_required
 def sessions_list(request):
     sessions = Session.objects.all()  # Retrieve all session objects from the database
-    return render(request, 'sessions_list.html', {'sessions': sessions})
-
+    question = Question.objects.all()
+    context = {
+        'sessions': sessions,
+        'question' : question
+    }
+    return render(request, 'sessions_list.html', context)
+    
 # Add Session Page 
 @login_required
 def add_question(request):

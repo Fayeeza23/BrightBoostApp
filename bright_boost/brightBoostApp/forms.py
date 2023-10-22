@@ -10,6 +10,8 @@ class SessionForm(forms.ModelForm):
         model = Session
         fields = ['date','session_time','room_no','instructor', 'students_attended', 'subject_area']
 
+# The QuestionForm class is a form that allows users to input information about a tutor's
+# questions.
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question

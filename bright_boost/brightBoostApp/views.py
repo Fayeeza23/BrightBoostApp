@@ -87,7 +87,7 @@ def add_question(request):
 
 # Admin
 def viewUser(request):
-    tutor = TutorSchedule.objects.all()  # Retrieve all session objects from the database
+    tutor = Session.objects.all()  # Retrieve all session objects from the database
     students = Students.objects.all()  
     context = {
         'tutor': tutor,

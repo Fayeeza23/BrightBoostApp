@@ -168,11 +168,12 @@
         </tr>
     </thead>
     <tbody>
+
         {% for tutor in tutor %}
             <tr>
-                <td>{{ tutor.tutor_name }}</td> 
+                <td>{{ tutor.instructor }}</td> 
                 <td>{{ tutor.subject_area }}</td>
-                <td>{{ tutor.room }}</td>
+                <td>{{ tutor.room_no }}</td>
             </tr>
         {% endfor %}
     </tbody>

@@ -1,12 +1,6 @@
 from django.db import models
 
 # Create your models here.
-# class Tutor(models.Model):
-#   firstName = models.CharField(max_length=255)
-#   lastName = models.CharField(max_length=255)
-#   subjectName = models.CharField(max_length=255)
-
-
 class Session(models.Model):
     date = models.DateField()
     session_time = models.TimeField()

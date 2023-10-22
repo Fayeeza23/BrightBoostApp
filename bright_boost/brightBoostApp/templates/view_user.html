@@ -163,16 +163,16 @@
       <table>
         <tr>
             <th>Instructor</th>
-            <th>Students Attended</th>
             <th>Subject Area</th>
+            <th>Room</th>
         </tr>
     </thead>
     <tbody>
-        {% for session in sessions %}
+        {% for tutor in tutor %}
             <tr>
-                <td>{{ session.instructor }}</td> 
-                <td>{{ session.students_attended }}</td>
-                <td>{{ session.subject_area }}</td>
+                <td>{{ tutor.tutor_name }}</td> 
+                <td>{{ tutor.subject_area }}</td>
+                <td>{{ tutor.room }}</td>
             </tr>
         {% endfor %}
     </tbody>

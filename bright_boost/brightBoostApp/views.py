@@ -87,10 +87,10 @@ def add_question(request):
 
 # Admin
 def viewUser(request):
-    sessions = Session.objects.all()  # Retrieve all session objects from the database
+    tutor = TutorSchedule.objects.all()  # Retrieve all session objects from the database
     students = Students.objects.all()  
     context = {
-        'sessions': sessions,
+        'tutor': tutor,
         'students':  students,
     }
     return render(request, 'view_user.html', context)

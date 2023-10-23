@@ -112,7 +112,7 @@ def add_tutor(request):
         form = TutorScheduleForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('view_user')
+            return redirect('sessions_list')
     else:
         form = TutorScheduleForm()
     return render(request, 'add_tutor.html', {'form': form})

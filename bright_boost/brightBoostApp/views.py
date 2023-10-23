@@ -87,7 +87,7 @@ def add_question(request):
 
 # Admin
 def viewUser(request):
-    tutor = Session.objects.all()  # Retrieve all session objects from the database
+    tutor = TutorSchedule.objects.all()  # Retrieve all session objects from the database
     students = Students.objects.all()  
     context = {
         'tutor': tutor,
@@ -112,7 +112,7 @@ def add_tutor(request):
         form = TutorScheduleForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('sessions_list')
+            return redirect('dashboard')
     else:
         form = TutorScheduleForm()
     return render(request, 'add_tutor.html', {'form': form})
